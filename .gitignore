@@ -30,3 +30,14 @@
 *.exe
 *.out
 *.app
+*.sln
+
+#特定フォルダーは無視
+Game/Debug
+Game/.vs
+Game/Game/Debug
+
+#拡張子無視
+*.wav
+*.txt
+
