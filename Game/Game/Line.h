@@ -1,12 +1,20 @@
 #pragma once
 
+enum Lane {
+	Z,
+	X,
+	C,
+	V,
+	Max
+};
+
 class Line {
 public:
 	Line(float judgeLinePosY);
 	~Line();
-	void Intialize();
 	void Draw();
-	void ChangeCloreText(bool change);
+	void ChangeCore(int lane, bool change);
+
 
 private:
 	void LineDraw();
@@ -17,8 +25,5 @@ private:
 	int initial_left_pos_x{ 160 };
 	int interval{ 150 };
 
-	int line_color;
-	int white;
-	int red;
-
+	unsigned int current_color_[(int)Lane::Max];
 };

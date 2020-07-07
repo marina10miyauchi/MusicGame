@@ -1,6 +1,8 @@
 #include "PlayScene.h"
 #include"Sound.h"
 #include"SoundID.h"
+#include"ColorConst.h"
+#include"Text.h"
 
 #include<list>
 #include<DxLib.h>
@@ -10,7 +12,6 @@ void PlayScene::Start()
 	notes_manager_ = new NotesManager("text/Amethyst_8bit_.txt");
 
 	line_ = new Line(judgeLine_pos_y);
-	line_->Intialize();
 
 	//‰¹‚ÌÄ¶
 	Sound::LoadSE(SoundId::Music_1, "Sound/Amethyst_8bit_20190620.wav");
@@ -46,8 +47,7 @@ void PlayScene::Draw() const
 	////ƒeƒXƒg•`‰æ
 	notes_manager_->Draw();
 	line_->Draw();
-	DrawFormatString(0, 0, GetColor(255, 255, 255), "%.1f", current_time);
-
+	Text::DrawStringText(Vec2Pos{ 0,0 }, std::to_string(current_time), ColorConst::Red);
 }
 
 bool PlayScene::Is_End() const

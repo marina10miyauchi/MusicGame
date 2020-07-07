@@ -3,6 +3,8 @@
 #include"Key.h"
 #include"KeyConst.h"
 #include<DxLib.h>
+#include"Text.h"
+#include"ColorConst.h"
 
 void TitleScene::Start()
 {
@@ -17,8 +19,9 @@ void TitleScene::Update(float delta_time)
 
 void TitleScene::Draw() const
 {
-	DrawFormatString(450, 350, GetColor(255, 255, 255), "タイトル画面");
-	DrawFormatString(420, 500, GetColor(255, 255, 255), "Push SpasebButton");
+
+	Text::DrawStringText(Vec2Pos{ 450,350 }, "タイトル画面", ColorConst::Red);
+	Text::DrawStringText(Vec2Pos{ 420,500 }, "Push SpasebButton");
 }
 
 bool TitleScene::Is_End() const

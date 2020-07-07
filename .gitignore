@@ -39,6 +39,7 @@
 Game/Debug
 Game/.vs
 Game/Game/Debug
+.vs/
 
 #拡張子無視
 *.wav
