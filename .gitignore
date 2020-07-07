@@ -31,6 +31,9 @@
 *.out
 *.app
 *.sln
+*.vcxproj
+*.filters
+*.user
 
 #特定フォルダーは無視
 Game/Debug
