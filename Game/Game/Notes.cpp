@@ -34,32 +34,10 @@ void Notes::Draw(NotesDate& notes)
 	}
 }
 
-void Notes::Initialize(NotesDate notes, int lane)
+void Notes::Initialize(NotesDate notes)
 {
 	notes.frag = true;
-	notes.x = 200.f + 150.f * lane;
+	notes.x = 200.f + 150.f * notes.lane;
 }
 
-///test
-
-void Notes::Each(std::function<void(bool)>  action)
-{
-	for (int i = 0; i < lane_num; i++)
-	{
-		for (int j = 0; j < notes_num; j++)
-		{
-			action(notes_date[i][j].frag);
-		}
-	}
-}
-
-void Notes::KeySet()
-{
-	key = new int[4]{
-	KEY_INPUT_Z,
-	KEY_INPUT_X,
-	KEY_INPUT_C,
-	KEY_INPUT_V
-	};
-}
 

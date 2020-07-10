@@ -5,6 +5,8 @@
 #include<DxLib.h>
 #include"Text.h"
 #include"ColorConst.h"
+#include"PadConst.h"
+#include"Mouse.h"
 
 void TitleScene::Start()
 {
@@ -16,6 +18,7 @@ void TitleScene::Update(float delta_time)
 	if (Key::Trigger(keyConst::Space))
 		is_end_ = true;
 }
+
 
 void TitleScene::Draw() const
 {

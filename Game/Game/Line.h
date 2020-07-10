@@ -10,6 +10,7 @@ enum Lane {
 
 class Line {
 public:
+	Line() = default;
 	Line(float judgeLinePosY);
 	~Line();
 	void Draw();
@@ -25,5 +26,5 @@ private:
 	int initial_left_pos_x{ 160 };
 	int interval{ 150 };
 
-	unsigned int current_color_[(int)Lane::Max];
+	static unsigned int current_color_[(int)Lane::Max];
 };

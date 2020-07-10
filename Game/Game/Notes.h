@@ -11,6 +11,10 @@ struct NotesDate
 	float y;
 	//ノーツの判定ライン到達カウント
 	float timing;
+	//番号
+	int num;
+	//レーン番号
+	int lane;
 };
 
 //降ってくるノーツの管理クラス（単体）
@@ -19,7 +23,7 @@ public:
 	Notes() = default;
 	~Notes();
 	//ノーツ初期化
-	void Initialize(NotesDate notes, int lane);
+	void Initialize(NotesDate notes);
 
 	//ノーツの更新
 	void UpDate(float judgeLinePosY,float currentTime,NotesDate& notes );
@@ -27,8 +31,6 @@ public:
 	void Draw(NotesDate& notes);
 
 private:
-	void Each(std::function<void(bool)> action);
-	void KeySet();
 
 private:
 	NotesDate notes_date[4][40];

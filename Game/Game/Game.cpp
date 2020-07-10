@@ -2,6 +2,7 @@
 #include<DxLib.h>
 #include"Sound.h"
 #include"Key.h"
+#include"Mouse.h"
 
 #include"Time.h"
 
@@ -35,6 +36,7 @@ int Game::Run()
 	//初期化処理
 	Sound::Initialize();
 	Key::Initialize();
+	Mouse::Initialize();
 	Start();
 	nextTime_ = GetNowCount();
 	while (ProcessMessage() == 0 && Is_Running())
@@ -43,12 +45,15 @@ int Game::Run()
 		//FPSの固定（ゲームランに入れるとなぜか43しか出なくなる…）
 		Time::FPS_Fixed();
 		Key::Update();
+		Mouse::Update();
 		//更新
 		Update(1.0f);
 		//画面クリア
 		ClearDrawScreen();
 		//描画
 		Draw();
+		//Key::DebugDraw();
+		//Mouse::DebugDraw();
 		//Time::TestDraw();
 		//裏画面の内容を表画面に反映
 		ScreenFlip();
@@ -61,6 +66,7 @@ int Game::Run()
 	//終了処理
 	Sound::Finalize();
 	Key::Finalize();
+	Mouse::Initialize();
 	return 0;
 }
 

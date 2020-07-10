@@ -3,9 +3,17 @@
 #include"Text.h"
 #include<DxLib.h>
 
-Line::Line(float judgeLinePosY):
+
+unsigned int Line::current_color_[Lane::Max];
+
+Line::Line(float judgeLinePosY) :
 	judgeLine_pos_y_{ judgeLinePosY }
-{}
+{
+	for (int i = 0; i < Lane::Max; i++)
+	{
+		current_color_[i] = ColorConst::White;
+	}
+}
 
 Line::~Line()
 {}
@@ -18,10 +26,9 @@ void Line::Draw()
 
 void Line::ChangeCore(int lane, bool change)
 {
+	current_color_[lane] = ColorConst::White;
 	if (change)
 		current_color_[lane] = ColorConst::Red;
-	else
-		current_color_[lane] = ColorConst::White;
 }
 
 void Line::LineDraw()
