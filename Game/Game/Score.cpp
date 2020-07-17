@@ -1,7 +1,11 @@
 #include "Score.h"
 #include<algorithm>
+#include"Text.h"
 
+#undef min
+#undef max
 
+//#define NOMINMAX
 
 Score::Score(int score) :score_{ score } {}
 
@@ -17,7 +21,7 @@ void Score::Add(int score)
 
 void Score::Draw() const
 {
-	
+	Text::DrawStringText(Vec2Pos{ 0,40 }, std::to_string(score_));
 }
 
 int Score::Get() const

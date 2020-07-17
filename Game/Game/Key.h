@@ -1,6 +1,7 @@
 #pragma once
 #include"KeyConst.h"
 #include<list>
+#include<map>
 
 static const int KEYS[15] = {
 	keyConst::Z,
@@ -24,6 +25,11 @@ static const int KEYS[15] = {
 
 };
 
+struct Test {
+	int keynum;
+	bool isPush = false;
+};
+
 class Key {
 public:
 	//‰Šú‰»
@@ -41,15 +47,13 @@ public:
 
 	static void DebugDraw();
 private:
-	static int KeyUpdate();
+	static void KeyUpdata();
 	static void SetKeyList();
 
 private:
-	static int cur_state_;
-	static int prev_state_;
-
-	static int key_num;
-
 	static std::list<int> keys_;
+
+	static std::map<int, bool> cur_keys_;
+	static std::map<int, bool>pre_keys_;
 
 };
