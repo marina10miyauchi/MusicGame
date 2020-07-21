@@ -16,19 +16,19 @@ Notes::~Notes()
 void Notes::UpDate(float judgeLinePosY,float currentTime,NotesDate& notes)
 {
 	//ƒm[ƒc‚ª‚ ‚ê‚Î
-	if (notes.frag) {
+	if (notes.hasNotes) {
 		notes.y = 750 * (float)(currentTime-notes.timing) / 2 + judgeLinePosY;
 		
 		if (750 + 20 < notes.y
 			&& 0.3 < currentTime -notes.timing)
-			notes.frag = false;
+			notes.hasNotes = false;
 	}
 }
 
 
 void Notes::Draw(NotesDate& notes)
 {
-	if (notes.frag) {
+	if (notes.hasNotes) {
 		DrawBoxAA(notes.x, notes.y - NOTE_HEIGHT / 2,
 			notes.x + NOTE_WIDTH, notes.y + NOTE_HEIGHT / 2, GetColor(0, 255, 0), TRUE);
 	}
@@ -36,7 +36,7 @@ void Notes::Draw(NotesDate& notes)
 
 void Notes::Initialize(NotesDate notes)
 {
-	notes.frag = true;
+	notes.hasNotes = true;
 	notes.x = 200.f + 150.f * notes.lane;
 }
 

@@ -4,7 +4,7 @@
 struct NotesDate
 {
 	//
-	bool frag;
+	bool hasNotes;
 	//pos_x
 	float x;
 	//pos_y
@@ -33,7 +33,6 @@ public:
 private:
 
 private:
-	NotesDate notes_date[4][40];
 	//ノーツの流れるレーン数
 	int lane_num{ 4 };
 	//1レーン当たりの同時生成可能ノーツ数

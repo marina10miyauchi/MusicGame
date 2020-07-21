@@ -4,6 +4,8 @@
 #include"NotesManager.h"
 #include"Line.h"
 
+#include"NotesTest.h"
+
 class  PlayScene :public IScene
 {
 public:
@@ -25,6 +27,7 @@ private:
 	bool is_end_{ false };
 
 	NotesManager* notes_manager_;
+	NotesTest* notes_test_;
 	Line* line_;
 
 	//test

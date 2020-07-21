@@ -23,3 +23,11 @@ public:
 	static const int Up{ KEY_INPUT_UP };
 	static const int Down{ KEY_INPUT_DOWN };
 };
+
+//”»’èƒ{ƒ^ƒ“@
+static const int KEYS_[4] = {
+	keyConst::Z,
+	keyConst::X,
+	keyConst::C,
+	keyConst::V,
+};

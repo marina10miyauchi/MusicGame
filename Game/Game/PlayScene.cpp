@@ -10,6 +10,7 @@
 void PlayScene::Start()
 {
 	notes_manager_ = new NotesManager("text/Amethyst_8bit_.txt");
+	notes_test_ = new NotesTest("text/test.txt");
 
 	line_ = new Line(judgeLine_pos_y);
 
@@ -35,7 +36,8 @@ void PlayScene::Update(float delta_time)
 	}
 
 
-	notes_manager_->Update(judgeLine_pos_y, current_time);
+	//notes_manager_->Update(judgeLine_pos_y, current_time);
+	notes_test_->Update(judgeLine_pos_y, current_time);
 
 	////test
 
@@ -45,7 +47,8 @@ void PlayScene::Update(float delta_time)
 void PlayScene::Draw() const
 {
 	////ƒeƒXƒg•`‰æ
-	notes_manager_->Draw();
+	//notes_manager_->Draw();
+	notes_test_->Draw();
 	line_->Draw();
 	Text::DrawStringText(Vec2Pos{ 0,0 }, std::to_string(current_time), ColorConst::Red);
 }
