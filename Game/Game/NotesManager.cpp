@@ -14,7 +14,8 @@ NotesManager::NotesManager(std::string fileName) :
 {
 	MusicScoreLoad();
 	Initialize();
-
+	score_ = new Score();
+	score_->Initialize();
 }
 
 NotesManager::~NotesManager() {}
@@ -24,7 +25,7 @@ void NotesManager::Initialize()
 	for (int col = 0; col < Lane::Max; col++) {
 		int lane_length = notes_count_[col];
 		for (int row = 0; row < lane_length; row++) {
-			notes_data_[col][row].frag = true;
+			notes_data_[col][row].hasNotes = true;
 			notes_data_[col][row].x = 200.f + 150.f * col;
 		}
 	}
@@ -35,12 +36,13 @@ void NotesManager::Update(float judgeLinePosY, float currentTime)
 	// ノーツ座標更新
 	for (int col = 0; col < Lane::Max; col++) {
 		for (int row = 0; row < max_notes_; row++) {
-
 			_notes_->UpDate(judgeLinePosY, currentTime, notes_data_[col][row]);
+
 		}
 	}
 
 	JudgeNotes(currentTime);
+	//JudgeTest(currentTime);
 }
 
 void NotesManager::JudgeNotes(float currentTime)
@@ -50,16 +52,14 @@ void NotesManager::JudgeNotes(float currentTime)
 		if (Key::Trigger(KEYS_[col])) {
 			Sound::PlaySE(SoundId::Click);
 			for (int row = 0; row < max_notes_; row++) {
-				if (CheckKey()&&notes_data_[col][row].frag
-					&& -good_judge_ < currentTime - notes_data_[col][row].timing
-					&& currentTime - notes_data_[col][row].timing < good_judge_) {
-					notes_data_[col][row].frag = false;
+				if (notes_data_[col][row].hasNotes
+					&& -good_timing_ < currentTime - notes_data_[col][row].timing
+					&& currentTime - notes_data_[col][row].timing < good_timing_) {
+					NotesPushAct(col, row);
 				}
 			}
 		}
 		line_->ChangeCore(col, Key::State(KEYS_[col]));
-
-
 	}
 }
 
@@ -71,37 +71,17 @@ void NotesManager::Draw()
 			_notes_->Draw(notes_data_[col][row]);
 		}
 	}
+	score_->Draw();
 }
 
-void NotesManager::PushAction(int lane)
+void NotesManager::NotesPushAct(int lane, int num)
 {
-	Sound::PlaySE(SoundId::Click);
-	line_->ChangeCore(lane, true);
+	notes_data_[lane][num].hasNotes = false;
+	//スコア加算
+	score_->Add(100);
+
 }
 
-bool NotesManager::PushKey(char key)
-{
-	if (key == 1) {
-		Sound::PlaySE(SoundId::Click);
-		return true;
-	}
-	else
-		return false;
-}
-
-bool NotesManager::CheckKey()
-{
-	if (Key::Trigger(keyConst::Z))
-		return true;
-	else if (Key::Trigger(keyConst::X))
-		return true;
-	else if (Key::Trigger(keyConst::C))
-		return true;
-	else if (Key::Trigger(keyConst::V))
-		return true;
-	else
-		return false;
-}
 
 void NotesManager::MusicScoreLoad()
 {
@@ -110,6 +90,7 @@ void NotesManager::MusicScoreLoad()
 		throw std::runtime_error("開けませんでした。");
 	int lane = 0;
 
+	int number_ = 0;
 	std::string line;
 	while (std::getline(file, line))
 	{
@@ -131,3 +112,5 @@ void NotesManager::MusicScoreLoad()
 		lane++;
 	}
 }
+
+

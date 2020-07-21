@@ -3,8 +3,8 @@
 #include<sstream>
 #include<stdexcept>
 
-CSVConverter::CSVConverter(const std::string fileName):
-	file_name_{fileName}
+CSVConverter::CSVConverter(const std::string fileName) :
+	file_name_{ fileName }
 {
 	Load();
 }
@@ -16,8 +16,9 @@ void CSVConverter::Load()
 	if (!file)throw std::runtime_error("CSVファイルがオープンできませんでした");
 	std::string line;
 	int line_count = 0;
-	int rane_count = 1;
 
+	Data data_;
+	std::ofstream test("output/test.txt");
 
 	//一行読み込み
 	while (std::getline(file, line))
@@ -61,6 +62,14 @@ void CSVConverter::Load()
 				case 4: rane_4.push_back(time_); break;
 				default:break;
 				}
+				data_.lane_ = rane_count;
+				data_.time_ = time_;
+
+				note_data_.push_back(data_);
+				test <<
+					data_.lane_ << "," <<
+					data_.time_ << "\n";
+
 			}
 			rane_count++;
 		}
@@ -75,6 +84,8 @@ void CSVConverter::Load()
 	Output(output, rane_4);
 
 	output.close();
+
+	test.close();
 
 }
 

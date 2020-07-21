@@ -5,6 +5,12 @@
 
 //csv¨txt‚Ì•ˆ–Ê‚É•ÏX
 
+struct Data
+{
+	int lane_;
+	float time_;
+};
+
 class CSVConverter {
 public:
 	CSVConverter() = default;
@@ -34,4 +40,6 @@ private:
 	Rane rane_2;
 	Rane rane_3;
 	Rane rane_4;
+
+	std::list<Data> note_data_;
 };
