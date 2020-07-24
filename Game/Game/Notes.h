@@ -1,10 +1,19 @@
 #pragma once
 #include<functional>
 
+enum NotesState {
+	None,
+	Good,
+	Prefect,
+	Miss
+};
+
 struct NotesDate
 {
 	//
 	bool hasNotes;
+	//
+	NotesState  state;
 	//pos_x
 	float x;
 	//pos_y
@@ -26,9 +35,10 @@ public:
 	void Initialize(NotesDate notes);
 
 	//ノーツの更新
-	void UpDate(float judgeLinePosY,float currentTime,NotesDate& notes );
+	void UpDate(float judgeLinePosY, float currentTime, NotesDate& notes);
 	//ノーツの描画
 	void Draw(NotesDate& notes);
+	bool NotesEnd();
 
 private:
 
@@ -46,4 +56,6 @@ private:
 	int* key;
 
 	float judgeline_y{ 600.0f };
+
+	static bool notes_end_;
 };

@@ -1,4 +1,5 @@
 #include "PlayScene.h"
+#include"Scene.h"
 #include"Sound.h"
 #include"SoundID.h"
 #include"ColorConst.h"
@@ -34,13 +35,10 @@ void PlayScene::Update(float delta_time)
 			one_ = true;
 		}
 	}
-
-
 	//notes_manager_->Update(judgeLine_pos_y, current_time);
 	notes_test_->Update(judgeLine_pos_y, current_time);
 
-	////test
-
+	is_end_ = notes_test_->IsNotesEnd();
 
 }
 
@@ -60,7 +58,8 @@ bool PlayScene::Is_End() const
 
 Scene PlayScene::Next() const
 {
-	return Scene();
+	Sound::StopBGM();
+	return Scene::Result;
 }
 
 void PlayScene::End() {}

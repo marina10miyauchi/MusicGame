@@ -21,7 +21,8 @@ void NotesTest::Initialize()
 {
 	for (int i = 0; i < notes_data_.size(); i++)
 	{
-		notes_data_[i].hasNotes = true;
+		//notes_data_[i].hasNotes = true;
+		notes_data_[i].state = NotesState::None;
 		notes_data_[i].x = 200.0f + 150.0f * (notes_data_[i].lane - 1);
 	}
 }
@@ -43,13 +44,26 @@ void NotesTest::JudgeNotes(float currentTime)
 			Sound::PlaySE(SoundId::Click);
 			for (int i = 0; i < notes_data_.size(); i++)
 			{
-				if (notes_data_[i].hasNotes && (notes_data_[i].lane - 1) == x)
+				//if (notes_data_[i].hasNotes && (notes_data_[i].lane - 1) == x)
+				//{
+				//	if (Judge(notes_data_[i], prefect_timing_, currentTime))
+				//		NotesPushAct(notes_data_[i], 50);
+				//	else if (Judge(notes_data_[i], good_timing_, currentTime))
+				//		NotesPushAct(notes_data_[i], 10);
+				//}
+				if (notes_data_[i].state == NotesState::None && (notes_data_[i].lane - 1) == x)
 				{
-					if (Judge(notes_data_[i], prefect_timing_, currentTime))
+					if (Judge(notes_data_[i], prefect_timing_, currentTime)) {
 						NotesPushAct(notes_data_[i], 50);
-					else if (Judge(notes_data_[i], good_timing_, currentTime))
+						notes_data_[i].state = NotesState::Good;
+					}
+					else if (Judge(notes_data_[i], good_timing_, currentTime)) {
 						NotesPushAct(notes_data_[i], 10);
+						notes_data_[i].state = NotesState::Prefect;
+					}
+
 				}
+
 			}
 		}
 		line_->ChangeCore(x, Key::State(KEYS_[x]));
@@ -69,9 +83,14 @@ void NotesTest::Draw()
 	score_->Draw();
 }
 
-void NotesTest::NotesPushAct(NotesDate notes_, int addScore)
+bool NotesTest::IsNotesEnd()
 {
-	notes_.hasNotes = false;
+	return _notes_->NotesEnd();
+}
+
+void NotesTest::NotesPushAct(NotesDate& notes_, int addScore)
+{
+	//notes_.hasNotes = false;
 	score_->Add(addScore);
 }
 

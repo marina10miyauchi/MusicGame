@@ -24,12 +24,14 @@ public:
 
 	void Draw();
 
+	bool IsNotesEnd();
+
 private:
-	void NotesPushAct(NotesDate notes_, int addScore);
+	void NotesPushAct(NotesDate& notes_, int addScore);
 	//•ˆ–Êƒf[ƒ^æ“¾
 	void MusicScoreLoad();
 	bool Judge(NotesDate notes_, float judge_timing, float current_time_);
-
+	void Conbo(NotesDate);
 
 
 private:
@@ -46,4 +48,5 @@ private:
 	float prefect_timing_{ 0.05f };
 	float good_timing_{ 0.1f };
 
+	int prev_number{ 0 };
 };
