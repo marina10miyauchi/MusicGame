@@ -9,11 +9,11 @@
 #include"Score.h"
 
 
-enum TimingJudge {
-	Prefect,
-	Good,
-	Miss,
-};
+//enum TimingJudge {
+//	Prefect,
+//	Good,
+//	Miss,
+//};
 
 //ノーツ全体の管理クラス
 class NotesManager {
@@ -28,6 +28,8 @@ public:
 	//ボタンを押されたかの判定
 
 	void Draw();
+
+	//bool IsNotesEnd();
 
 private:
 	void NotesPushAct(int lane, int num);

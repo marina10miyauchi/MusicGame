@@ -14,7 +14,6 @@ NotesManager::NotesManager(std::string fileName) :
 {
 	MusicScoreLoad();
 	Initialize();
-	score_ = new Score();
 	score_->Initialize();
 }
 
@@ -26,6 +25,7 @@ void NotesManager::Initialize()
 		int lane_length = notes_count_[col];
 		for (int row = 0; row < lane_length; row++) {
 			notes_data_[col][row].hasNotes = true;
+			//notes_data_[col][row].state = NotesState::None;
 			notes_data_[col][row].x = 200.f + 150.f * col;
 		}
 	}
@@ -56,7 +56,15 @@ void NotesManager::JudgeNotes(float currentTime)
 					&& -good_timing_ < currentTime - notes_data_[col][row].timing
 					&& currentTime - notes_data_[col][row].timing < good_timing_) {
 					NotesPushAct(col, row);
+
 				}
+				//if (notes_data_[col][row].state==NotesState::None
+				//	&& -good_timing_ < currentTime - notes_data_[col][row].timing
+				//	&& currentTime - notes_data_[col][row].timing < good_timing_) {
+				//	NotesPushAct(col, row);
+
+				//}
+
 			}
 		}
 		line_->ChangeCore(col, Key::State(KEYS_[col]));
@@ -74,9 +82,15 @@ void NotesManager::Draw()
 	score_->Draw();
 }
 
+//bool NotesManager::IsNotesEnd()
+//{
+//	return _notes_->NotesEnd();
+//}
+
 void NotesManager::NotesPushAct(int lane, int num)
 {
 	notes_data_[lane][num].hasNotes = false;
+
 	//ƒXƒRƒA‰ÁŽZ
 	score_->Add(100);
 

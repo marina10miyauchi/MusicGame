@@ -4,7 +4,7 @@
 #include<DxLib.h>
 
 
-unsigned int Line::current_color_[Lane::Max];
+unsigned int Line::current_color_[(int)Lane::Max];
 
 Line::Line(float judgeLinePosY) :
 	judgeLine_pos_y_{ judgeLinePosY }

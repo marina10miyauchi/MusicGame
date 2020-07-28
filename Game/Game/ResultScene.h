@@ -1,8 +1,7 @@
 #pragma once
 #include"IScene.h"
 #include"NotesCount.h"
-#include"NotesManager.h"
-#include"Line.h"
+#include"Score.h"
 
 #include"NotesTest.h"
 
@@ -10,6 +9,7 @@ enum ResultButton {
 	End,
 	ReStart,
 	Select,
+	Max_Button
 };
 
 class  ResultScene :public IScene
@@ -31,6 +31,10 @@ public:
 
 private:
 	bool is_end_{ false };
-
+	Score* score_;
+	Scene nextScene;
 	int select_button_num;
+
+	static unsigned int color_[(int)ResultButton::Max_Button];
+
 };

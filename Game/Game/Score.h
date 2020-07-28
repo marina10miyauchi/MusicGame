@@ -2,7 +2,7 @@
 
 class Score {
 public:
-	Score(int score = 0);
+	Score() = default;
 	void Initialize(int score = 0);
 	void Add(int score);
 	void Draw()const;
@@ -10,5 +10,5 @@ public:
 private:
 
 private:
-	int score_;
+	static int score_;
 };

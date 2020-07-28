@@ -5,9 +5,8 @@
 #undef min
 #undef max
 
-//#define NOMINMAX
+int Score::score_{ 0 };
 
-Score::Score(int score) :score_{ score } {}
 
 void Score::Initialize(int score)
 {

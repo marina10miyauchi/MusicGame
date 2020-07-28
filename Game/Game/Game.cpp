@@ -2,6 +2,7 @@
 #include<DxLib.h>
 #include"Sound.h"
 #include"Key.h"
+#include"KeyConst.h"
 #include"Mouse.h"
 
 #include"Time.h"
@@ -88,5 +89,5 @@ void Game::End()
 
 bool Game::Is_Running() const
 {
-	return CheckHitKey(KEY_INPUT_ESCAPE) == 0;
+	return Key::Trigger(keyConst::Esc) == 0;
 }

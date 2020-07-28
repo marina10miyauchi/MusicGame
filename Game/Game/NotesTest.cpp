@@ -11,7 +11,6 @@ NotesTest::NotesTest(std::string fileName) :
 {
 	MusicScoreLoad();
 	Initialize();
-	score_ = new Score();
 	score_->Initialize();
 }
 
