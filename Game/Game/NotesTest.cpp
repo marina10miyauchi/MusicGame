@@ -9,6 +9,7 @@
 NotesTest::NotesTest(std::string fileName) :
 	file_name_{ fileName }
 {
+	notes_data_.clear();
 	MusicScoreLoad();
 	Initialize();
 	score_->Initialize();

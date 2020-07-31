@@ -10,7 +10,8 @@
 
 void PlayScene::Start()
 {
-	notes_manager_ = new NotesManager("text/Amethyst_8bit_.txt");
+	is_end_ = false;
+	//notes_manager_ = new NotesManager("text/Amethyst_8bit_.txt");
 	notes_test_ = new NotesTest("text/test.txt");
 
 	line_ = new Line(judgeLine_pos_y);
@@ -39,7 +40,6 @@ void PlayScene::Update(float delta_time)
 	notes_test_->Update(judgeLine_pos_y, current_time);
 
 	is_end_ = notes_test_->IsNotesEnd();
-
 }
 
 void PlayScene::Draw() const
@@ -58,7 +58,6 @@ bool PlayScene::Is_End() const
 
 Scene PlayScene::Next() const
 {
-	Sound::StopBGM();
 	return Scene::Result;
 }
 

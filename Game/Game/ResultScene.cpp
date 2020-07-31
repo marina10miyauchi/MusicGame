@@ -10,6 +10,7 @@ unsigned int ResultScene::color_[(int)ResultButton::Max_Button];
 
 void ResultScene::Start()
 {
+	is_end_ = false;
 	select_button_num = 0;
 }
 
