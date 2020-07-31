@@ -3,6 +3,7 @@
 
 void SelectScene::Start()
 {
+	is_end_ = false;
 }
 
 void SelectScene::Update(float delta_time)

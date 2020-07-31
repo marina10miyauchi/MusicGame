@@ -1,5 +1,7 @@
 #include "Notes.h"
 #include<DxLib.h>
+#include"Graphics2D.h"
+#include"Assets.h"
 
 #define WIN_W 800 // ウインドウの横幅
 #define WIN_H 600 // ウインドウの縦幅
@@ -49,13 +51,8 @@ void Notes::UpDate(float judgeLinePosY, float currentTime, NotesDate& notes)
 
 void Notes::Draw(NotesDate& notes)
 {
-	//if (notes.hasNotes) {
-	//	DrawBoxAA(notes.x, notes.y - NOTE_HEIGHT / 2,
-	//		notes.x + NOTE_WIDTH, notes.y + NOTE_HEIGHT / 2, GetColor(0, 255, 0), TRUE);
-	//}
 	if (notes.state == NotesState::None)
-		DrawBoxAA(notes.x, notes.y - NOTE_HEIGHT / 2,
-			notes.x + NOTE_WIDTH, notes.y + NOTE_HEIGHT / 2, GetColor(0, 255, 0), TRUE);
+		Graphics2D::DrawSprite(TextureID::Notes, Vector2(notes.x, notes.y), Vector2(0.2f, 0.2f));
 }
 
 bool Notes::NotesEnd()

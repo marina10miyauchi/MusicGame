@@ -5,12 +5,15 @@
 #include<DxLib.h>
 #include"Text.h"
 #include"ColorConst.h"
-#include"PadConst.h"
-#include"Mouse.h"
+#include"Graphics2D.h"
+#include"Assets.h"
 
 void TitleScene::Start()
 {
 	is_end_ = false;
+
+	Graphics2D::LoadSprite(TextureID::TitleBackGround, "Assets/Texture/background.png");
+	Graphics2D::LoadSprite(TextureID::Notes, "Assets/Texture/Notes.png");
 }
 
 void TitleScene::Update(float delta_time)
@@ -22,6 +25,7 @@ void TitleScene::Update(float delta_time)
 
 void TitleScene::Draw() const
 {
+	Graphics2D::ScreenSizeDrawSprite(TextureID::TitleBackGround);
 
 	Text::DrawStringText(Vec2Pos{ 450,350 }, "ƒ^ƒCƒgƒ‹‰æ–Ê", ColorConst::Red);
 	Text::DrawStringText(Vec2Pos{ 420,500 }, "Push SpasebButton");

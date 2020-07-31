@@ -20,4 +20,5 @@ public:
 
 private:
 	bool is_end_{ false };
+
 };

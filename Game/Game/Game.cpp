@@ -4,6 +4,7 @@
 #include"Key.h"
 #include"KeyConst.h"
 #include"Mouse.h"
+#include"Graphics2D.h"
 
 #include"Time.h"
 
@@ -38,6 +39,7 @@ int Game::Run()
 	Sound::Initialize();
 	Key::Initialize();
 	Mouse::Initialize();
+	Graphics2D::Initialize();
 	Start();
 	nextTime_ = GetNowCount();
 	while (ProcessMessage() == 0 && Is_Running())
@@ -47,6 +49,7 @@ int Game::Run()
 		Time::FPS_Fixed();
 		Key::Update();
 		Mouse::Update();
+		
 		//更新
 		Update(1.0f);
 		//画面クリア
@@ -68,6 +71,7 @@ int Game::Run()
 	Sound::Finalize();
 	Key::Finalize();
 	Mouse::Initialize();
+	Graphics2D::Finalize();
 	return 0;
 }
 
