@@ -13,7 +13,7 @@ void TitleScene::Start()
 	is_end_ = false;
 
 	Graphics2D::LoadSprite(TextureID::TitleBackGround, "Assets/Texture/background.png");
-	Graphics2D::LoadSprite(TextureID::Notes, "Assets/Texture/Notes.png");
+	Graphics2D::LoadSprite(TextureID::Notes_ID, "Assets/Texture/Notes.png");
 }
 
 void TitleScene::Update(float delta_time)

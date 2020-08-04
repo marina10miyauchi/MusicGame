@@ -7,6 +7,7 @@
 #include"Key.h"
 #include"Score.h"
 #include"Notes.h"
+#include"GameData.h"
 
 
 NotesManager::NotesManager(std::string fileName) :
@@ -21,7 +22,7 @@ NotesManager::~NotesManager() {}
 
 void NotesManager::Initialize()
 {
-	for (int col = 0; col < Lane::Max; col++) {
+	for (int col = 0; col < LANE_NUM; col++) {
 		int lane_length = notes_count_[col];
 		for (int row = 0; row < lane_length; row++) {
 			notes_data_[col][row].hasNotes = true;
@@ -34,7 +35,7 @@ void NotesManager::Initialize()
 void NotesManager::Update(float judgeLinePosY, float currentTime)
 {
 	// ノーツ座標更新
-	for (int col = 0; col < Lane::Max; col++) {
+	for (int col = 0; col < LANE_NUM; col++) {
 		for (int row = 0; row < max_notes_; row++) {
 			_notes_->UpDate(judgeLinePosY, currentTime, notes_data_[col][row]);
 
@@ -48,7 +49,7 @@ void NotesManager::Update(float judgeLinePosY, float currentTime)
 void NotesManager::JudgeNotes(float currentTime)
 {
 	// レーンに対応するキーが押されていて、かつ判定範囲内であればノーツを削除
-	for (int col = 0; col < Lane::Max; col++) {
+	for (int col = 0; col < LANE_NUM; col++) {
 		if (Key::Trigger(KEYS_[col])) {
 			Sound::PlaySE(SoundId::Click);
 			for (int row = 0; row < max_notes_; row++) {
@@ -73,7 +74,7 @@ void NotesManager::JudgeNotes(float currentTime)
 
 void NotesManager::Draw()
 {
-	for (int col = 0; col < Lane::Max; col++) {
+	for (int col = 0; col < LANE_NUM; col++) {
 		for (int row = 0; row < max_notes_; row++) {
 
 			_notes_->Draw(notes_data_[col][row]);

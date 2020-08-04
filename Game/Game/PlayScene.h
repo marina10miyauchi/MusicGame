@@ -34,15 +34,7 @@ private:
 	LONGLONG start_count{ 0 };
 
 	float current_time{ 0 };
-	//ノーツの流れるレーン数
-	int lane_num{ 4 };
-	//1レーン当たりの同時生成可能ノーツ数
-	int notes_num{ 40 };
-	//ノーツの落下スピード
 
-	int* key;
-
-	float judgeLine_pos_y{ 600.0f };
 	int offset_s{ 3 };
 
 	bool one_{ false };

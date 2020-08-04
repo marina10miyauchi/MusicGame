@@ -1,6 +1,8 @@
 #pragma once
 #include"IScene.h"
 
+
+
 class SelectScene:public IScene
 {
 public:
@@ -17,6 +19,8 @@ public:
 	virtual Scene Next() const override;
 
 	virtual void End() override;
+
+
 
 private:
 	bool is_end_{ false };

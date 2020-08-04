@@ -4,6 +4,7 @@
 #include"ColorConst.h"
 #include"Assets.h"
 #include"Text.h"
+#include"GameData.h"
 
 #include<list>
 #include<DxLib.h>
@@ -13,7 +14,7 @@ void PlayScene::Start()
 	is_end_ = false;
 	notes_test_ = new NotesTest("Assets/text/test.txt");
 
-	line_ = new Line(judgeLine_pos_y);
+	line_ = new Line();
 
 	//‰¹‚ÌÄ¶
 	Sound::LoadSE(SoundId::Music_1, "Assets/Sound/Amethyst_8bit_20190620.wav");
@@ -35,7 +36,7 @@ void PlayScene::Update(float delta_time)
 			one_ = true;
 		}
 	}
-	notes_test_->Update(judgeLine_pos_y, current_time);
+	notes_test_->Update(JUDGE_LINE_Y, current_time);
 
 	is_end_ = notes_test_->IsNotesEnd();
 }

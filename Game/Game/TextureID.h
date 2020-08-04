@@ -4,5 +4,5 @@ enum TextureID {
 	TitleBackGround = 0,		//タイトル画面のテクスチャ
 
 
-	Notes=10,					//ノーツ
+	Notes_ID=10,					//ノーツ
 };

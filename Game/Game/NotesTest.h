@@ -48,5 +48,6 @@ private:
 	float prefect_timing_{ 0.05f };
 	float good_timing_{ 0.1f };
 
-	int prev_number{ 0 };
+	int prefect_point{ 50 };
+	int good_point{ 10 };
 };

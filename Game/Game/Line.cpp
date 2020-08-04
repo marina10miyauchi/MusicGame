@@ -4,12 +4,11 @@
 #include<DxLib.h>
 
 
-unsigned int Line::current_color_[(int)Lane::Max];
+unsigned int Line::current_color_[LANE_NUM];
 
-Line::Line(float judgeLinePosY) :
-	judgeLine_pos_y_{ judgeLinePosY }
+Line::Line()
 {
-	for (int i = 0; i < Lane::Max; i++)
+	for (int i = 0; i < LANE_NUM; i++)
 	{
 		current_color_[i] = ColorConst::White;
 	}
@@ -34,19 +33,19 @@ void Line::ChangeCore(int lane, bool change)
 void Line::LineDraw()
 {
 	//”»’èƒ‰ƒCƒ“
-	DrawLine(0, judgeLine_pos_y_, 1000, judgeLine_pos_y_, GetColor(255, 255, 255));
+	DrawLine(0, JUDGE_LINE_Y, WINDOW_WIDTH, JUDGE_LINE_Y, ColorConst::White);
 	//ƒŒ[ƒ“ƒ‰ƒCƒ“
-	DrawLine(initial_left_pos_x + interval * 0, 0, initial_left_pos_x + interval * 0, 600, ColorConst::White);
-	DrawLine(initial_left_pos_x + interval * 1, 0, initial_left_pos_x + interval * 1, 600, ColorConst::White);
-	DrawLine(initial_left_pos_x + interval * 2, 0, initial_left_pos_x + interval * 2, 600, ColorConst::White);
-	DrawLine(initial_left_pos_x + interval * 3, 0, initial_left_pos_x + interval * 3, 600, ColorConst::White);
-	DrawLine(initial_left_pos_x + interval * 4, 0, initial_left_pos_x + interval * 4, 600, ColorConst::White);
+	DrawLine(LEFT_EDGE_X + LANE_BETWEEN * Lane::Z, 0, LEFT_EDGE_X + LANE_BETWEEN * Lane::Z, JUDGE_LINE_Y, ColorConst::White);
+	DrawLine(LEFT_EDGE_X + LANE_BETWEEN * Lane::X, 0, LEFT_EDGE_X + LANE_BETWEEN * Lane::X, JUDGE_LINE_Y, ColorConst::White);
+	DrawLine(LEFT_EDGE_X + LANE_BETWEEN * Lane::C, 0, LEFT_EDGE_X + LANE_BETWEEN * Lane::C, JUDGE_LINE_Y, ColorConst::White);
+	DrawLine(LEFT_EDGE_X + LANE_BETWEEN * Lane::V, 0, LEFT_EDGE_X + LANE_BETWEEN * Lane::V, JUDGE_LINE_Y, ColorConst::White);
+	DrawLine(LEFT_EDGE_X + LANE_BETWEEN * Lane::Edge, 0, LEFT_EDGE_X + LANE_BETWEEN * Lane::Edge, JUDGE_LINE_Y, ColorConst::White);
 }
 
 void Line::TextDraw()
 {
-	DrawFormatStringF(initial_left_pos_x + interval * 0.5f, judgeLine_pos_y_ + 50, current_color_[Lane::Z], "Z");
-	DrawFormatStringF(initial_left_pos_x + interval * 1.5f, judgeLine_pos_y_ + 50, current_color_[Lane::X], "X");
-	DrawFormatStringF(initial_left_pos_x + interval * 2.5f, judgeLine_pos_y_ + 50, current_color_[Lane::C], "C");
-	DrawFormatStringF(initial_left_pos_x + interval * 3.5f, judgeLine_pos_y_ + 50, current_color_[Lane::V], "V");
+	DrawFormatStringF(LEFT_EDGE_X + LANE_BETWEEN * 0.5f, JUDGE_LINE_Y + underLange_, current_color_[Lane::Z], "Z");
+	DrawFormatStringF(LEFT_EDGE_X + LANE_BETWEEN * 1.5f, JUDGE_LINE_Y + underLange_, current_color_[Lane::X], "X");
+	DrawFormatStringF(LEFT_EDGE_X + LANE_BETWEEN * 2.5f, JUDGE_LINE_Y + underLange_, current_color_[Lane::C], "C");
+	DrawFormatStringF(LEFT_EDGE_X + LANE_BETWEEN * 3.5f, JUDGE_LINE_Y + underLange_, current_color_[Lane::V], "V");
 }

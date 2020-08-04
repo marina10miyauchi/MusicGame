@@ -1,17 +1,19 @@
 #pragma once
+#include"GameData.h"
 
 enum Lane {
 	Z,
 	X,
 	C,
 	V,
-	Max
+	
+	Edge	//右端
 };
 
 class Line {
 public:
-	Line() = default;
-	Line(float judgeLinePosY);
+	//Line() = default;
+	Line();
 	~Line();
 	void Draw();
 	void ChangeCore(int lane, bool change);
@@ -22,9 +24,8 @@ private:
 	void TextDraw();
 
 private:
-	float judgeLine_pos_y_;
-	int initial_left_pos_x{ 160 };
-	int interval{ 150 };
+	
+	int underLange_{ 50 };//ラインから文字表示場所までの長さ
 
-	static unsigned int current_color_[(int)Lane::Max];
+	static unsigned int current_color_[LANE_NUM];
 };

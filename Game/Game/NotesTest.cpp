@@ -5,6 +5,7 @@
 #include"KeyConst.h"
 #include"Sound.h"
 #include"SoundID.h"
+#include"GameData.h"
 
 NotesTest::NotesTest(std::string fileName) :
 	file_name_{ fileName }
@@ -23,7 +24,7 @@ void NotesTest::Initialize()
 	{
 		//notes_data_[i].hasNotes = true;
 		notes_data_[i].state = NotesState::None;
-		notes_data_[i].x = 200.0f + 150.0f * (notes_data_[i].lane - 1);
+		notes_data_[i].x = LEFT_EDGE_X + NOTE_WIDTH / 2 + LANE_BETWEEN * (notes_data_[i].lane - 1);
 	}
 }
 
@@ -38,27 +39,20 @@ void NotesTest::Update(float judgeLinePosY, float currentTime)
 
 void NotesTest::JudgeNotes(float currentTime)
 {
-	for (int x = 0; x < Lane::Max; x++)
+	for (int x = 0; x < LANE_NUM; x++)
 	{
 		if (Key::Trigger(KEYS_[x])) {
 			Sound::PlaySE(SoundId::Click);
 			for (int i = 0; i < notes_data_.size(); i++)
 			{
-				//if (notes_data_[i].hasNotes && (notes_data_[i].lane - 1) == x)
-				//{
-				//	if (Judge(notes_data_[i], prefect_timing_, currentTime))
-				//		NotesPushAct(notes_data_[i], 50);
-				//	else if (Judge(notes_data_[i], good_timing_, currentTime))
-				//		NotesPushAct(notes_data_[i], 10);
-				//}
 				if (notes_data_[i].state == NotesState::None && (notes_data_[i].lane - 1) == x)
 				{
 					if (Judge(notes_data_[i], prefect_timing_, currentTime)) {
-						NotesPushAct(notes_data_[i], 50);
+						NotesPushAct(notes_data_[i], prefect_point);
 						notes_data_[i].state = NotesState::Good;
 					}
 					else if (Judge(notes_data_[i], good_timing_, currentTime)) {
-						NotesPushAct(notes_data_[i], 10);
+						NotesPushAct(notes_data_[i], good_point);
 						notes_data_[i].state = NotesState::Prefect;
 					}
 
@@ -76,10 +70,6 @@ void NotesTest::Draw()
 	{
 		_notes_->Draw(notes_data_[i]);
 	}
-
-	//for (auto notes_ : notes_data_) {
-	//	_notes_->Draw(notes_);
-	//}
 	score_->Draw();
 }
 

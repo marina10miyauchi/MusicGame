@@ -8,9 +8,6 @@
 #include<DxLib.h>
 
 
-LONGLONG start_count{ 0 };
-std::list<Notes> note_;
-
 void GameMain::Start()
 {
 	////ƒV[ƒ“‚Ì’Ç‰Á
