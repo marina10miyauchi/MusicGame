@@ -16,9 +16,6 @@ void PlayScene::Start()
 
 	line_ = new Line();
 
-	//âπÇÃçƒê∂
-	Sound::LoadSE(SoundId::Music_1, "Assets/Sound/Amethyst_8bit_20190620.wav");
-	Sound::LoadSE(SoundId::Click, "Assets/Sound/cursor2.wav");
 	start_count = GetNowHiPerformanceCount();
 
 }

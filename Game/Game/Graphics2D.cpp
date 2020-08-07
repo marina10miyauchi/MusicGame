@@ -57,6 +57,14 @@ void Graphics2D::ClearColor(float r, float g, float b)
 	SetBackgroundColor(int(r*255.0f), int(g*255.0f), int(b*255.0f));
 }
 
+Vector2 Graphics2D::TextureSize(int id)
+{
+	int sprite_x, sprite_y = 0;
+	GetGraphSize(spritemap_[id], &sprite_x, &sprite_y);
+
+	return Vector2(sprite_x, sprite_y);
+}
+
 void Graphics2D::Finalize()
 {
 	Initialize();

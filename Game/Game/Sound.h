@@ -10,10 +10,12 @@ public:
 	static void PlayBGM(int id);
 	static void StopBGM();
 	static void DeleteBGM(int id);
+	static void BGMVolume(int volume);
 
 	static void LoadSE(int id, const std::string& fileName);
 	static void PlaySE(int id);
 	static void DeleteSE(int id);
+	static void SEVolume(int volume);
 
 	static void Finalize();
 
@@ -21,4 +23,6 @@ private:
 	static std::unordered_map<int, int> bgm_map_;
 	static int current_bgm_;
 	static std::unordered_map<int, int> se_map_;
+	static int bgmVolume_;
+	static int seVolume_;
 };

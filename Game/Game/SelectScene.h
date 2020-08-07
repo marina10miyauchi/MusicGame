@@ -1,9 +1,11 @@
 #pragma once
 #include"IScene.h"
+#include"SelectFrame.h"
+#include<unordered_map>
+#include"Scene.h"
 
 
-
-class SelectScene:public IScene
+class SelectScene :public IScene
 {
 public:
 	SelectScene() = default;
@@ -21,8 +23,15 @@ public:
 	virtual void End() override;
 
 
+private:
+	void Init();
+
 
 private:
 	bool is_end_{ false };
+	static std::unordered_map<int, Scene> selectScene_;
+
+	SelectFrame* selectFramw_;
+
 
 };

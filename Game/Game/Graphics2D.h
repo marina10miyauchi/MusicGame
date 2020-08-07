@@ -15,6 +15,7 @@ public:
 
 	static void DeleteSprite(int id);
 	static void ClearColor(float r, float g, float b);
+	static Vector2 TextureSize(int id);
 	static void Finalize();
 
 private:

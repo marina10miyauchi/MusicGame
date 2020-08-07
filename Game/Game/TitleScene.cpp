@@ -7,6 +7,7 @@
 #include"ColorConst.h"
 #include"Graphics2D.h"
 #include"Assets.h"
+#include"Sound.h"
 
 void TitleScene::Start()
 {
@@ -14,12 +15,22 @@ void TitleScene::Start()
 
 	Graphics2D::LoadSprite(TextureID::TitleBackGround, "Assets/Texture/background.png");
 	Graphics2D::LoadSprite(TextureID::Notes_ID, "Assets/Texture/Notes.png");
+	Graphics2D::LoadSprite(TextureID::Button_Select, "Assets/Texture/button_on.png");
+	Graphics2D::LoadSprite(TextureID::Button_NoSelect, "Assets/Texture/button_off.png");
+	Graphics2D::LoadSprite(TextureID::JacketPhoto_, "Assets/Texture/button_off.png");
+
+	//âπÇÃçƒê∂
+	Sound::LoadSE(SoundId::Music_1, "Assets/Sound/Amethyst_8bit_20190620.wav");
+	Sound::LoadSE(SoundId::Click, "Assets/Sound/cursor2.wav");
+
 }
 
 void TitleScene::Update(float delta_time)
 {
-	if (Key::Trigger(keyConst::Space))
+	if (Key::Trigger(keyConst::Space)) {
+		Sound::PlaySE(SoundId::Click);
 		is_end_ = true;
+	}
 }
 
 
@@ -38,7 +49,7 @@ bool TitleScene::Is_End() const
 
 Scene TitleScene::Next() const
 {
-	return Scene::Play;
+	return Scene::Select;
 }
 
 void TitleScene::End() {}

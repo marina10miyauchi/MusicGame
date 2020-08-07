@@ -9,6 +9,7 @@
 class  PlayScene :public IScene
 {
 public:
+	//PlayScene() = default;
 	PlayScene() = default;
 	// IScene ‚ğ‰î‚µ‚ÄŒp³‚³‚ê‚Ü‚µ‚½
 	virtual void Start() override;

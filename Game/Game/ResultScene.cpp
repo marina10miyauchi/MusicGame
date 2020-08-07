@@ -28,7 +28,7 @@ void ResultScene::Update(float delta_time)
 		{
 		case (int)ResultButton::End:		nextScene = Scene::End;		 break;
 		case (int)ResultButton::ReStart:	nextScene = Scene::Play;	 break;
-		case (int)ResultButton::Select:		nextScene = Scene::Title;	 break;
+		case (int)ResultButton::Select:		nextScene = Scene::Select;	 break;
 		default:break;
 		}
 		is_end_ = true;

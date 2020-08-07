@@ -10,15 +10,14 @@
 
 void GameMain::Start()
 {
-	////シーンの追加
-	////
+	////シーンの追加////
+
 	scene_manager.Add(Scene::Title, new_Scene<TitleScene>());
 	scene_manager.Add(Scene::Select, new_Scene<SelectScene>());
 	scene_manager.Add(Scene::Play, new_Scene<PlayScene>());
 	scene_manager.Add(Scene::Result, new_Scene<ResultScene>());
 	scene_manager.Change(Scene::Title);
 
-	//カラー設定
 }
 
 void GameMain::Update(float delta_time)
