@@ -75,6 +75,7 @@ void NotesTest::Draw()
 
 bool NotesTest::IsNotesEnd()
 {
+	
 	return _notes_->NotesEnd();
 }
 

@@ -1,8 +1,8 @@
 #pragma once
 
 enum SoundId {
-	//PlayMusic
-	Music_1 = 0,
+	//BGM
+	BGM,
 
 	//SE
 	Click = 50,

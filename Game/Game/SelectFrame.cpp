@@ -4,6 +4,7 @@
 #include"Key.h"
 #include"KeyConst.h"
 #include"Text.h"
+#include"MusicScore.h"
 
 std::string SelectFrame::music_name_;
 int SelectFrame::texture_ID_;
@@ -11,9 +12,9 @@ int SelectFrame::hight_score_;
 
 
 int SelectFrame::select_button_num;
-int SelectFrame::button_texture_ID_[MusicData::MaxMusicData]; 
-int SelectFrame::jacket_phote[MusicData::MaxMusicData];
-std::string  SelectFrame::titles[MusicData::MaxMusicData];
+int SelectFrame::button_texture_ID_[6];
+int SelectFrame::jacket_phote[6];
+std::string  SelectFrame::titles[6];
 
 
 void SelectFrame::Initialize()
@@ -23,7 +24,7 @@ void SelectFrame::Initialize()
 	{
 		texture = TextureID::Button_NoSelect;
 	}
-	for (int i = 0; i <(int)MusicData::MaxMusicData; i++)
+	for (int i = 0; i < 6; i++)
 	{
 		titles[i] = std::to_string(i) + "MusicData";
 		jacket_phote[i] = TextureID::JacketPhoto_;
@@ -33,6 +34,8 @@ void SelectFrame::Initialize()
 void SelectFrame::Updata()
 {
 	Select();
+	int num = 100 + select_button_num;
+	MusicScore::SetMusicScore(num);
 }
 
 void SelectFrame::Draw()
@@ -56,16 +59,16 @@ void SelectFrame::Select()
 {
 	if (Key::Trigger(keyConst::Down)) {
 		select_button_num++;
-		if (select_button_num >= (int)MusicData::MaxMusicData)
-			select_button_num = (int)MusicData::Music_01;
+		if (select_button_num >= 6)
+			select_button_num = 0;
 	}
 	if (Key::Trigger(keyConst::Up)) {
 		select_button_num--;
 		if (select_button_num <= -1)
-			select_button_num = (int)MusicData::Music_06;
+			select_button_num = 5;
 	}
 
-	for (int i = 0; i < (int)MusicData::MaxMusicData; i++)
+	for (int i = 0; i < 6; i++)
 	{
 		if (select_button_num == i) {
 			button_texture_ID_[i] = TextureID::Button_Select;
@@ -80,10 +83,10 @@ void SelectFrame::Select()
 
 void SelectFrame::ButtonDraw()
 {
-	Graphics2D::DrawSprite(button_texture_ID_[MusicData::Music_01], Vector2{ 600,0 }, Vector2{ 6.25,2 });
-	Graphics2D::DrawSprite(button_texture_ID_[MusicData::Music_02], Vector2{ 600,128 }, Vector2{ 6.25,2 });
-	Graphics2D::DrawSprite(button_texture_ID_[MusicData::Music_03], Vector2{ 600,256 }, Vector2{ 6.25,2 });
-	Graphics2D::DrawSprite(button_texture_ID_[MusicData::Music_04], Vector2{ 600,384 }, Vector2{ 6.25,2 });
-	Graphics2D::DrawSprite(button_texture_ID_[MusicData::Music_05], Vector2{ 600,512 }, Vector2{ 6.25,2 });
-	Graphics2D::DrawSprite(button_texture_ID_[MusicData::Music_06], Vector2{ 600,640 }, Vector2{ 6.25,2 });
+	Graphics2D::DrawSprite(button_texture_ID_[0], Vector2{ 600,0 }, Vector2{ 6.25,2 });
+	Graphics2D::DrawSprite(button_texture_ID_[1], Vector2{ 600,128 }, Vector2{ 6.25,2 });
+	Graphics2D::DrawSprite(button_texture_ID_[2], Vector2{ 600,256 }, Vector2{ 6.25,2 });
+	Graphics2D::DrawSprite(button_texture_ID_[3], Vector2{ 600,384 }, Vector2{ 6.25,2 });
+	Graphics2D::DrawSprite(button_texture_ID_[4], Vector2{ 600,512 }, Vector2{ 6.25,2 });
+	Graphics2D::DrawSprite(button_texture_ID_[5], Vector2{ 600,640 }, Vector2{ 6.25,2 });
 }

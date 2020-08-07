@@ -9,3 +9,11 @@
 #define JUDGE_LINE_Y 600	// 判定ラインのY座標
 #define LEFT_EDGE_X 160		//
 #define LANE_BETWEEN 150	// レーン同士の間の長さ　レーン間
+
+class GameData {
+public:
+
+
+private:
+	static int current_music_datanum;
+};

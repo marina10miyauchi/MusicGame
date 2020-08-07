@@ -5,7 +5,7 @@
 #include"KeyConst.h"
 #include"Mouse.h"
 #include"Graphics2D.h"
-
+#include"MusicScore.h"
 #include"Time.h"
 
 
@@ -37,6 +37,7 @@ int Game::Run()
 {
 	//初期化処理
 	Sound::Initialize();
+	MusicScore::Iniitialize();
 	Key::Initialize();
 	Mouse::Initialize();
 	Graphics2D::Initialize();
@@ -49,7 +50,7 @@ int Game::Run()
 		Time::FPS_Fixed();
 		Key::Update();
 		Mouse::Update();
-		
+
 		//更新
 		Update(1.0f);
 		//画面クリア

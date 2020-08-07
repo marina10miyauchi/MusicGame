@@ -16,6 +16,9 @@ void SelectScene::Start()
 void SelectScene::Update(float delta_time)
 {
 	selectFramw_->Updata();
+	if (Key::Trigger(keyConst::Space)) {
+		is_end_ = true;
+	}
 }
 
 void SelectScene::Draw() const
@@ -31,7 +34,7 @@ bool SelectScene::Is_End() const
 
 Scene SelectScene::Next() const
 {
-	return Scene::Select;
+	return Scene::Play;
 }
 
 void SelectScene::End()

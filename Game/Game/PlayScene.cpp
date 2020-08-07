@@ -5,14 +5,20 @@
 #include"Assets.h"
 #include"Text.h"
 #include"GameData.h"
+#include"MusicScore.h"
+
+#include"Assets.h"
 
 #include<list>
 #include<DxLib.h>
 
+int test;
+
 void PlayScene::Start()
 {
 	is_end_ = false;
-	notes_test_ = new NotesTest("Assets/text/test.txt");
+	test = MusicDataID::Music_01;
+	notes_test_ = new NotesTest(MusicScore::GetMusicData());
 
 	line_ = new Line();
 
@@ -29,7 +35,7 @@ void PlayScene::Update(float delta_time)
 
 	if (current_time >= 0) {
 		if (!one_) {
-			Sound::PlaySE(SoundId::Music_1);
+			//Sound::PlaySE(test);
 			one_ = true;
 		}
 	}

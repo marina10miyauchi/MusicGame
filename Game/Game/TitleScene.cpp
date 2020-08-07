@@ -8,20 +8,31 @@
 #include"Graphics2D.h"
 #include"Assets.h"
 #include"Sound.h"
+#include"MusicScore.h"
+
 
 void TitleScene::Start()
 {
 	is_end_ = false;
 
+	//テクスチャ
 	Graphics2D::LoadSprite(TextureID::TitleBackGround, "Assets/Texture/background.png");
 	Graphics2D::LoadSprite(TextureID::Notes_ID, "Assets/Texture/Notes.png");
 	Graphics2D::LoadSprite(TextureID::Button_Select, "Assets/Texture/button_on.png");
 	Graphics2D::LoadSprite(TextureID::Button_NoSelect, "Assets/Texture/button_off.png");
 	Graphics2D::LoadSprite(TextureID::JacketPhoto_, "Assets/Texture/button_off.png");
 
-	//音の再生
-	Sound::LoadSE(SoundId::Music_1, "Assets/Sound/Amethyst_8bit_20190620.wav");
+	//音
+	Sound::LoadSE(MusicDataID::Music_01, "Assets/Sound/Amethyst_8bit_20190620.wav");
 	Sound::LoadSE(SoundId::Click, "Assets/Sound/cursor2.wav");
+
+	//譜面データ
+	MusicScore::LoadMusicScore(MusicDataID::Music_01, "Assets/text/test.txt");
+	MusicScore::LoadMusicScore(MusicDataID::Music_02, "Assets/text/test.txt");
+	MusicScore::LoadMusicScore(MusicDataID::Music_03, "Assets/text/test.txt");
+	MusicScore::LoadMusicScore(MusicDataID::Music_04, "Assets/text/test.txt");
+	MusicScore::LoadMusicScore(MusicDataID::Music_05, "Assets/text/test.txt");
+	MusicScore::LoadMusicScore(MusicDataID::Music_06, "Assets/text/test.txt");
 
 }
 

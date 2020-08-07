@@ -1,17 +1,6 @@
 #pragma once
 #include<string>
-
-enum MusicData {
-	Music_01,
-	Music_02,
-	Music_03,
-	Music_04,
-	Music_05,
-	Music_06,
-
-	MaxMusicData
-};
-
+#include"Assets.h"
 
 class SelectFrame {
 public:
@@ -35,9 +24,8 @@ private:
 
 	static int select_button_num;
 
-	bool is_select[MusicData::MaxMusicData];
-	static int button_texture_ID_[MusicData::MaxMusicData];
-	static int jacket_phote[MusicData::MaxMusicData];
-	static std::string titles[MusicData::MaxMusicData];
+	static int button_texture_ID_[6];
+	static int jacket_phote[6];
+	static std::string titles[6];
 
 };
