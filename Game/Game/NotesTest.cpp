@@ -50,10 +50,12 @@ void NotesTest::JudgeNotes(float currentTime)
 					if (Judge(notes_data_[i], prefect_timing_, currentTime)) {
 						NotesPushAct(notes_data_[i], prefect_point);
 						notes_data_[i].state = NotesState::Good;
+						Effect(notes_data_[i].lane);
 					}
 					else if (Judge(notes_data_[i], good_timing_, currentTime)) {
 						NotesPushAct(notes_data_[i], good_point);
 						notes_data_[i].state = NotesState::Prefect;
+						Effect(notes_data_[i].lane);
 					}
 
 				}
@@ -75,7 +77,7 @@ void NotesTest::Draw()
 
 bool NotesTest::IsNotesEnd()
 {
-	
+
 	return _notes_->NotesEnd();
 }
 
@@ -125,4 +127,9 @@ bool NotesTest::Judge(NotesDate notes_, float judge_timing, float current_time_)
 		&& current_time_ - notes_timing < judge_timing)
 		return true;
 	return false;
+}
+
+void NotesTest::Effect(int line)
+{
+
 }

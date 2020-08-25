@@ -32,7 +32,7 @@ private:
 	void MusicScoreLoad();
 	bool Judge(NotesDate notes_, float judge_timing, float current_time_);
 	void Conbo(NotesDate);
-
+	void Effect(int line);
 
 private:
 	//譜面データのファイル名
