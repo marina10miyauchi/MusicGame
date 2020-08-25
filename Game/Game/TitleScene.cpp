@@ -16,7 +16,9 @@ void TitleScene::Start()
 	is_end_ = false;
 
 	//テクスチャ
-	Graphics2D::LoadSprite(TextureID::TitleBackGround, "Assets/Texture/background.png");
+	Graphics2D::LoadSprite(TextureID::TitleBackGround, "Assets/Texture/background_cyber_circle.png");
+	Graphics2D::LoadSprite(TextureID::SelectBackGround, "Assets/Texture/background_cyber_line.png");
+
 	Graphics2D::LoadSprite(TextureID::Notes_ID, "Assets/Texture/Notes.png");
 	Graphics2D::LoadSprite(TextureID::Button_Select, "Assets/Texture/button_on.png");
 	Graphics2D::LoadSprite(TextureID::Button_NoSelect, "Assets/Texture/button_off.png");
@@ -56,7 +58,9 @@ void TitleScene::Update(float delta_time)
 
 void TitleScene::Draw() const
 {
+	//SetDrawBlendMode(DX_BLENDMODE_INVSRC, 256);
 	Graphics2D::ScreenSizeDrawSprite(TextureID::TitleBackGround);
+	//SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 
 	Text::DrawStringText(Vec2Pos{ 450,350 }, "タイトル画面", ColorConst::Red);
 	Text::DrawStringText(Vec2Pos{ 420,500 }, "Push SpasebButton");

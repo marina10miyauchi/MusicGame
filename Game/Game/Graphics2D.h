@@ -9,8 +9,12 @@ public:
 	static void Initialize();
 	static void LoadSprite(int id, const std::string& fileName);
 	static void DrawSprite(int id, const Vector2& pos);
+	static void DrawSprite(int id, const Vector2& pos,int blendmode,int value);
+
 	static void DrawSprite(int id, const Vector2& pos, const Vector2& scale);
-	static void DrawSprite(int id, const Vector2& pos, const Vector2& center, const Vector2& scale, float rotete);
+	static void DrawSprite(int id, const Vector2& pos, const Vector2& center, const Vector2& scale, float rotate);
+	static void DrawSprite(int id, const Vector2& pos, const Vector2& center, const Vector2& scale, float rotate, int blendmode, int value);
+
 	static void ScreenSizeDrawSprite(int id);
 	static void DrawSprite(int id, const Vector2& pos, int x, int y, int w, int h);
 

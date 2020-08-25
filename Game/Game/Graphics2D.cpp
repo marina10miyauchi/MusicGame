@@ -22,6 +22,13 @@ void Graphics2D::DrawSprite(int id, const Vector2 & pos)
 	DrawGraphF(pos.x, pos.y, spritemap_[id], TRUE);
 }
 
+void Graphics2D::DrawSprite(int id, const Vector2 & pos, int blendmode, int value)
+{
+	SetDrawBlendMode(blendmode, value);
+	DrawGraphF(pos.x, pos.y, spritemap_[id], TRUE);
+	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+}
+
 void Graphics2D::DrawSprite(int id, const Vector2 & pos, const Vector2 & scale)
 {
 	int sprite_x, sprite_y = 0;
@@ -36,6 +43,13 @@ void Graphics2D::DrawSprite(int id, const Vector2 & pos, const Vector2 & scale)
 void Graphics2D::DrawSprite(int id, const Vector2 & pos, const Vector2& center, const Vector2 & scale, float rotate)
 {
 	DrawRotaGraph3F(pos.x, pos.y,center.x,center.y, scale.x, scale.y, MathHelper::ToRadians(rotate), spritemap_[id], TRUE);
+}
+
+void Graphics2D::DrawSprite(int id, const Vector2 & pos, const Vector2 & center, const Vector2 & scale, float rotate, int blendmode, int value)
+{
+	SetDrawBlendMode(blendmode, value);
+	DrawRotaGraph3F(pos.x, pos.y, center.x, center.y, scale.x, scale.y, MathHelper::ToRadians(rotate), spritemap_[id], TRUE);
+	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 }
 
 void Graphics2D::ScreenSizeDrawSprite(int id)

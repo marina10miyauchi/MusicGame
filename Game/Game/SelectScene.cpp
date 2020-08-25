@@ -4,6 +4,7 @@
 #include"Text.h"
 #include"Key.h"
 #include"KeyConst.h"
+#include"Assets.h"
 
 std::unordered_map<int, Scene> SelectScene::selectScene_;
 
@@ -11,6 +12,7 @@ void SelectScene::Start()
 {
 	is_end_ = false;
 	selectFramw_->Initialize();
+	//circle_=new CyberCircle(TextureID::Circle_1,Vector2())
 }
 
 void SelectScene::Update(float delta_time)
@@ -23,6 +25,7 @@ void SelectScene::Update(float delta_time)
 
 void SelectScene::Draw() const
 {
+	Graphics2D::ScreenSizeDrawSprite(TextureID::SelectBackGround);
 	//ボタン表示　
 	selectFramw_->Draw();
 }

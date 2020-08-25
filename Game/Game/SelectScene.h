@@ -3,6 +3,7 @@
 #include"SelectFrame.h"
 #include<unordered_map>
 #include"Scene.h"
+#include"CyberCircle.h"
 
 
 class SelectScene :public IScene
@@ -33,5 +34,5 @@ private:
 
 	SelectFrame* selectFramw_;
 
-
+	CyberCircle* circle_;
 };

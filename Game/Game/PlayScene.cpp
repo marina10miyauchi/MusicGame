@@ -11,13 +11,14 @@
 
 #include<list>
 #include<DxLib.h>
+#include"Graphics2D.h"
 
 int test;
 
 void PlayScene::Start()
 {
 	is_end_ = false;
-	test = MusicDataID::Music_01;
+	////test = MusicDataID::Music_01;
 	notes_test_ = new NotesTest(MusicScore::GetMusicData());
 
 	line_ = new Line();
@@ -35,7 +36,7 @@ void PlayScene::Update(float delta_time)
 
 	if (current_time >= 0) {
 		if (!one_) {
-			//Sound::PlaySE(test);
+			Sound::PlaySE(MusicDataID::Music_01);
 			one_ = true;
 		}
 	}
@@ -46,6 +47,9 @@ void PlayScene::Update(float delta_time)
 
 void PlayScene::Draw() const
 {
+	SetDrawBlendMode(DX_BLENDMODE_INVSRC, 256);
+	Graphics2D::ScreenSizeDrawSprite(TextureID::TitleBackGround);
+	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);	Graphics2D::ClearColor(0, 0.3f, 0.3f);
 	////ƒeƒXƒg•`‰æ
 	notes_test_->Draw();
 	line_->Draw();
