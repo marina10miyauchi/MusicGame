@@ -10,6 +10,7 @@ public:
 	static void LoadSprite(int id, const std::string& fileName);
 	static void DrawSprite(int id, const Vector2& pos);
 	static void DrawSprite(int id, const Vector2& pos, const Vector2& scale);
+	static void DrawSprite(int id, const Vector2& pos, const Vector2& center, const Vector2& scale, float rotete);
 	static void ScreenSizeDrawSprite(int id);
 	static void DrawSprite(int id, const Vector2& pos, int x, int y, int w, int h);
 

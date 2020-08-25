@@ -1,5 +1,6 @@
 #include "Graphics2D.h"
 #include<DxLib.h>
+#include"MathHelper.h"
 
 std::unordered_map<int, int>Graphics2D::spritemap_;
 int Graphics2D::screenSize_x;
@@ -30,6 +31,11 @@ void Graphics2D::DrawSprite(int id, const Vector2 & pos, const Vector2 & scale)
 
 	DrawExtendGraph(pos.x, pos.y, scalingPos_x, scalingPos_y, spritemap_[id], TRUE);
 
+}
+
+void Graphics2D::DrawSprite(int id, const Vector2 & pos, const Vector2& center, const Vector2 & scale, float rotate)
+{
+	DrawRotaGraph3F(pos.x, pos.y,center.x,center.y, scale.x, scale.y, MathHelper::ToRadians(rotate), spritemap_[id], TRUE);
 }
 
 void Graphics2D::ScreenSizeDrawSprite(int id)

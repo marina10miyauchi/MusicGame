@@ -1,5 +1,6 @@
 #pragma once
 #include"IScene.h"
+#include"CyberCircle.h"
 
 class TitleScene :public IScene {
 public:
@@ -19,5 +20,10 @@ public:
 
 private:
 	bool is_end_{ false };
+	float rotate_{ 0 };
+
+	CyberCircle* circle_;
+	CyberCircle* circle_2;
+	CyberCircle* circle_3;
 
 };
