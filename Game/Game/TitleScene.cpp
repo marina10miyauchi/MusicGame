@@ -75,9 +75,6 @@ void TitleScene::Draw() const
 	circle_->Draw();
 	circle_2->Draw();
 	circle_3->Draw();
-	Graphics2D::DrawSprite(TextureID::Perfect_, Vector2(450,350), Vector2(0.7f, 0.7f), Vector2::one(), 0, DX_BLENDMODE_ALPHA, 126);
-
-
 }
 
 bool TitleScene::Is_End() const
