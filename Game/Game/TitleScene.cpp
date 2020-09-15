@@ -18,12 +18,19 @@ void TitleScene::Start()
 	//テクスチャ
 	Graphics2D::LoadSprite(TextureID::TitleBackGround, "Assets/Texture/background_cyber_circle.png");
 	Graphics2D::LoadSprite(TextureID::SelectBackGround, "Assets/Texture/background_cyber_line.png");
+	Graphics2D::LoadSprite(TextureID::ResultBackGround, "Assets/Texture/ResultBG.jpg");
 
 	Graphics2D::LoadSprite(TextureID::Notes_ID, "Assets/Texture/Notes.png");
 	Graphics2D::LoadSprite(TextureID::Button_Select, "Assets/Texture/button_on.png");
 	Graphics2D::LoadSprite(TextureID::Button_NoSelect, "Assets/Texture/button_off.png");
 	Graphics2D::LoadSprite(TextureID::JacketPhoto_, "Assets/Texture/button_off.png");
 	Graphics2D::LoadSprite(TextureID::Circle_1, "Assets/Texture/Cyber.png");
+	
+	Graphics2D::LoadSprite(TextureID::ResultFrame, "Assets/Texture/ResultFrame.png");
+	Graphics2D::LoadSprite(TextureID::Perfect_, "Assets/Texture/Prfect.png");
+	Graphics2D::LoadSprite(TextureID::Good_, "Assets/Texture/Good.png");
+	Graphics2D::LoadSprite(TextureID::Miss_, "Assets/Texture/Miss.png");
+
 
 	//音
 	Sound::LoadSE(MusicDataID::Music_01, "Assets/Sound/Amethyst_8bit_20190620.wav");
@@ -68,6 +75,8 @@ void TitleScene::Draw() const
 	circle_->Draw();
 	circle_2->Draw();
 	circle_3->Draw();
+	Graphics2D::DrawSprite(TextureID::Perfect_, Vector2(450,350), Vector2(0.7f, 0.7f), Vector2::one(), 0, DX_BLENDMODE_ALPHA, 126);
+
 
 }
 

@@ -2,6 +2,7 @@
 #include"IScene.h"
 #include"NotesCount.h"
 #include"Score.h"
+#include"CyberCircle.h"
 
 #include"NotesTest.h"
 
@@ -31,6 +32,7 @@ public:
 
 private:
 	bool is_end_{ false };
+	CyberCircle* circle_;
 	Score* score_;
 	Scene nextScene;
 	int select_button_num;

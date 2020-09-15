@@ -49,3 +49,8 @@ void Line::TextDraw()
 	DrawFormatStringF(LEFT_EDGE_X + LANE_BETWEEN * 2.5f, JUDGE_LINE_Y + underLange_, current_color_[Lane::C], "C");
 	DrawFormatStringF(LEFT_EDGE_X + LANE_BETWEEN * 3.5f, JUDGE_LINE_Y + underLange_, current_color_[Lane::V], "V");
 }
+
+void Line::JudgeEffectDraw()
+{
+	
+}

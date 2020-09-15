@@ -57,9 +57,8 @@ void NotesTest::JudgeNotes(float currentTime)
 						notes_data_[i].state = NotesState::Prefect;
 						Effect(notes_data_[i].lane);
 					}
-
+				
 				}
-
 			}
 		}
 		line_->ChangeCore(x, Key::State(KEYS_[x]));
@@ -71,6 +70,7 @@ void NotesTest::Draw()
 	for (int i = 0; i < notes_data_.size(); i++)
 	{
 		_notes_->Draw(notes_data_[i]);
+
 	}
 	score_->Draw();
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include"GameData.h"
+#include"JudgeEffect.h"
 
 enum Lane {
 	Z,
@@ -22,10 +23,13 @@ public:
 private:
 	void LineDraw();
 	void TextDraw();
+	void JudgeEffectDraw();
 
 private:
 	
 	int underLange_{ 50 };//ƒ‰ƒCƒ“‚©‚ç•¶š•\¦êŠ‚Ü‚Å‚Ì’·‚³
 
 	static unsigned int current_color_[LANE_NUM];
+	JudgeEffect* judge_effect[LANE_NUM];
+
 };

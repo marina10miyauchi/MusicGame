@@ -4,6 +4,7 @@
 #include"NotesManager.h"
 #include"Line.h"
 
+#include"JudgeEffect.h"
 #include"NotesTest.h"
 
 class  PlayScene :public IScene
@@ -30,6 +31,7 @@ private:
 	NotesManager* notes_manager_;
 	NotesTest* notes_test_;
 	Line* line_;
+	JudgeEffect* judge_effect_[4];
 
 	//test
 	LONGLONG start_count{ 0 };

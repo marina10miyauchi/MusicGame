@@ -8,6 +8,7 @@
 
 #include"Line.h"
 #include"Score.h"
+#include"JudgeEffect.h"
 
 
 
@@ -50,4 +51,6 @@ private:
 
 	int prefect_point{ 50 };
 	int good_point{ 10 };
+
+	float judge_{ false };
 };
